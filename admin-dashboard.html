@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Student Record System</h1>
+            <nav>
+                <span>Welcome, Admin</span>
+                <button id="logout-btn" class="btn btn-secondary">Logout</button>
+            </nav>
+        </header>
+        
+        <main class="dashboard">
+            <div class="dashboard-header">
+                <h2>Admin Dashboard</h2>
+            </div>
+            
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="students">Manage Students</button>
+                <button class="tab-btn" data-tab="modules">Manage Modules</button>
+                <button class="tab-btn" data-tab="enrollments">Manage Enrollments</button>
+                <button class="tab-btn" data-tab="marks">Manage Marks</button>
+                <button class="tab-btn" data-tab="reports">Generate Reports</button>
+            </div>
+            
+            <div class="tab-content">
+                <!-- Students Tab -->
+                <div id="students-tab" class="tab-pane active">
+                    <h3>Manage Students</h3>
+                    <button id="add-student-btn" class="btn btn-primary">Add Student</button>
+                    
+                    <div class="form-container" id="add-student-form" style="display: none;">
+                        <h4>Add New Student</h4>
+                        <form id="student-form">
+    <div class="form-group">
+        <label for="student-name">Student Name:</label>
+        <input type="text" id="student-name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="student-dob">Date of Birth:</label>
+        <input type="date" id="student-dob" name="dateOfBirth" required>
+    </div>
+    <div class="form-group">
+        <label for="student-email">Email Address:</label>
+        <input type="email" id="student-email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="student-contact">Contact Number:</label>
+        <input type="text" id="student-contact" name="contactNumber">
+    </div>
+    <div class="form-group">
+        <label for="student-programme">Programme:</label>
+        <select id="student-programme" name="programme" required>
+            <option value="">Select Programme</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="student-year">Year Enrolled:</label>
+        <input type="number" id="student-year" name="yearEnrolled" min="2020" max="2030" value="2024" required>
+    </div>
+    <div class="form-group">
+        <label for="student-password">Password:</label>
+        <input type="password" id="student-password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Student</button>
+    <button type="button" id="cancel-student-btn" class="btn btn-secondary">Cancel</button>
+</form>
+                    </div>
+                    
+                    <div id="students-list" class="table-container">
+                        <!-- Students will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- Modules Tab -->
+                <div id="modules-tab" class="tab-pane">
+                    <h3>Manage Modules</h3>
+                    <button id="add-module-btn" class="btn btn-primary">Add Module</button>
+                    
+                    <div class="form-container" id="add-module-form" style="display: none;">
+    <h4>Add New Module</h4>
+    <form id="module-form">
+        <div class="form-group">
+            <label for="module-code">Module Code:</label>
+            <input type="text" id="module-code" name="moduleCode" required>
+        </div>
+        <div class="form-group">
+            <label for="module-name">Module Name:</label>
+            <input type="text" id="module-name" name="moduleName" required>
+        </div>
+        <div class="form-group">
+            <label for="module-description">Description:</label>
+            <textarea id="module-description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="module-credits">Credit Hours:</label>
+            <input type="number" id="module-credits" name="creditHours" min="1" max="30" required>
+        </div>
+        <div class="form-group">
+            <label for="module-year">Year Level:</label>
+            <input type="number" id="module-year" name="yearLevel" min="1" max="5" required>
+        </div>
+        <div class="form-group">
+            <label for="module-semester">Semester Offered:</label>
+            <select id="module-semester" name="semester">
+                <option value="">Select Semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="module-programme">Programme:</label>
+            <select id="module-programme" name="programme" required>
+                <option value="">Select Programme</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Module</button>
+        <button type="button" id="cancel-module-btn" class="btn btn-secondary">Cancel</button>
+    </form>
+</div>
+                    
+                    <div id="modules-list" class="table-container">
+                        <!-- Modules will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- Enrollments Tab -->
+                <div id="enrollments-tab" class="tab-pane">
+                    <h3>Manage Enrollments</h3>
+                    <button id="add-enrollment-btn" class="btn btn-primary">Enroll Student</button>
+                    
+                    <div class="form-container" id="add-enrollment-form" style="display: none;">
+                        <h4>Enroll Student in Module</h4>
+                        <form id="enrollment-form">
+                            <div class="form-group">
+                                <label for="enrollment-student">Student:</label>
+                                <select id="enrollment-student" name="studentId" required>
+                                    <!-- Students will be populated here -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="enrollment-module">Module:</label>
+                                <select id="enrollment-module" name="moduleCode" required>
+                                    <!-- Modules will be populated here -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="enrollment-semester">Semester:</label>
+                                <select id="enrollment-semester" name="semester" required>
+                                    <option value="1">Semester 1</option>
+                                    <option value="2">Semester 2</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enroll Student</button>
+                            <button type="button" id="cancel-enrollment-btn" class="btn btn-secondary">Cancel</button>
+                        </form>
+                    </div>
+                    
+                    <div id="enrollments-list" class="table-container">
+                        <!-- Enrollments will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- Marks Tab -->
+                <div id="marks-tab" class="tab-pane">
+                    <h3>Manage Marks</h3>
+                    <button id="add-mark-btn" class="btn btn-primary">Enter Marks</button>
+                    
+                    <div class="form-container" id="add-mark-form" style="display: none;">
+    <h4>Enter Marks</h4>
+    <form id="mark-form">
+        <div class="form-group">
+            <label for="mark-enrollment">Select Enrollment:</label>
+            <select id="mark-enrollment" name="enrollmentId" required>
+                <option value="">Select Enrollment</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="mark-value">Marks (0-100):</label>
+            <input type="number" id="mark-value" name="marks" min="0" max="100" step="0.1" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Marks</button>
+        <button type="button" id="cancel-mark-btn" class="btn btn-secondary">Cancel</button>
+    </form>
+</div>
+                    
+                    <div id="marks-list" class="table-container">
+                        <!-- Marks will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- Reports Tab -->
+            <div id="reports-tab" class="tab-pane">
+    <h3>Generate Reports</h3>
+    <div class="report-options">
+        <div class="form-group">
+            <label for="report-student">Select Student:</label>
+            <select id="report-student" name="studentId" required>
+                <option value="">Select Student</option>
+            </select>
+        </div>
+        
+        <div class="form-group" id="semester-selection">
+            <label for="report-semester">Select Semester (for Result Slip):</label>
+            <select id="report-semester" name="semester">
+                <option value="">Select Semester</option>
+            </select>
+        </div>
+        
+        <div class="form-group" id="year-selection">
+            <label for="report-year">Select Academic Year (for Academic Record):</label>
+            <input type="number" id="report-year" name="year" min="2020" max="2030" value="2024">
+        </div>
+        
+        <button id="semester-report-btn" class="btn btn-primary">Generate Semester Result Slip (PDF)</button>
+        <button id="academic-record-btn" class="btn btn-primary">Generate Academic Record (PDF)</button>
+        <button id="transcript-btn" class="btn btn-primary">Generate Full Transcript (PDF)</button>
+    </div>
+    
+    <div id="report-result" class="report-result">
+        <!-- PDF will open in new tab -->
+    </div>
+</div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/admin.js"></script>
+</body>
+</html>

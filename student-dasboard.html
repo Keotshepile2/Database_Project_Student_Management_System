@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Student Record System</h1>
+            <nav>
+                <span id="student-name">Welcome, Student</span>
+                <button id="logout-btn" class="btn btn-secondary">Logout</button>
+            </nav>
+        </header>
+        
+        <main class="dashboard">
+            <div class="dashboard-header">
+                <h2>Student Dashboard</h2>
+                <div class="student-info">
+                    <p><strong>Student ID:</strong> <span id="student-id"></span></p>
+                    <p><strong>Programme:</strong> <span id="student-programme"></span></p>
+                    <p><strong>Year of Study:</strong> <span id="student-year"></span></p>
+                </div>
+            </div>
+            
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="modules">My Modules</button>
+                <button class="tab-btn" data-tab="marks">My Marks</button>
+                <button class="tab-btn" data-tab="reports">Reports</button>
+            </div>
+            
+            <div class="tab-content">
+                <!-- Modules Tab -->
+                <div id="modules-tab" class="tab-pane active">
+                    <h3>Enrolled Modules</h3>
+                    <div id="modules-list" class="table-container">
+                        <p>Loading modules...</p>
+                    </div>
+                </div>
+                
+                <!-- Marks Tab -->
+                <div id="marks-tab" class="tab-pane">
+                    <h3>Marks</h3>
+                    <div id="marks-list" class="table-container">
+                        <p>Loading marks...</p>
+                    </div>
+                </div>
+                
+                <!-- Reports Tab -->
+                <div id="reports-tab" class="tab-pane">
+                    <h3>Generate Reports</h3>
+                    <div class="report-options">
+                        <button id="semester-report-btn" class="btn btn-primary">Semester Result Slip</button>
+                        <button id="academic-record-btn" class="btn btn-primary">Academic Record</button>
+                        <button id="transcript-btn" class="btn btn-primary">Full Transcript</button>
+                    </div>
+                    
+                    <div id="report-result" class="report-result">
+                        <!-- Reports will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/auth.js"></script>
+    <script src="js/student.js"></script>
+</body>
+</html>
