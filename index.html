@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Record System</title>
+    <title>Create Account - Student Record System</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,43 +12,92 @@
             <h1>Student Record System</h1>
         </header>
         
-        <main class="homepage">
-            <div class="welcome-section">
-                <h2>Welcome to the Student Record System</h2>
-                <p>Manage academic records efficiently and securely</p>
+        <main class="register-page">
+            <div class="register-form-container">
+                <h2>Create Account</h2>
                 
-                <div class="auth-options">
-                    <div class="login-options">
-                        <h3>Existing Users</h3>
-                        <a href="login.html?type=student" class="btn btn-primary">Student Login</a>
-                        <a href="login.html?type=admin" class="btn btn-secondary">Admin Login</a>
+                <div class="account-type-selector">
+                    <button type="button" class="type-btn active" data-type="student">Student Account</button>
+                    <button type="button" class="type-btn" data-type="admin">Admin Account</button>
+                </div>
+                
+                <form id="register-form" >
+                    <!-- Student Specific Fields -->
+                    <div id="student-fields" class="user-fields">
+                        <div class="form-group">
+                            <label for="student-name">Full Name:</label>
+                            <input type="text" id="student-name" name="studentName" >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="student-dob">Date of Birth:</label>
+                            <input type="date" id="student-dob" name="dateOfBirth" >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="student-contact">Contact Number:</label>
+                            <input type="text" id="student-contact" name="contactNumber">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="student-programme">Programme:</label>
+                            <select id="student-programme" name="programmeCode" >
+                                <option value="">Select Programme</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="student-year">Year Enrolled:</label>
+                            <input type="number" id="student-year" name="yearEnrolled" min="2020" max="2030" value="2024">
+                        </div>
                     </div>
                     
-                    <div class="register-options">
-                        <h3>New Users</h3>
-                        <p>Don't have an account? Create one now!</p>
-                        <a href="register.html" class="btn btn-success">Create Account</a>
+                    <!-- Admin Specific Fields -->
+                    <!-- Admin Specific Fields -->
+                    <div id="admin-fields" class="user-fields" style="display: none;">
+                        <div class="form-group">
+                            <label for="admin-name">Full Name:</label>
+                            <input type="text" id="admin-name" name="adminName">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="admin-faculty">Department:</label>
+                            <select id="admin-faculty" name="faculty">
+                                <option value="">Select Faculty</option>
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
+                        </div>
                     </div>
-                </div>
+                    
+                    <!-- Common Fields -->
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required minlength="6">
+                        <small class="form-help">Password must be at least 6 characters long</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password:</label>
+                        <input type="password" id="confirm-password" name="confirmPassword" >
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+                
+                <div id="error-message" class="error-message"></div>
+                <div id="success-message" class="success-message"></div>
+                
+                <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+                <p><a href="index.html">Back to Home</a></p>
             </div>
-            
-         
         </main>
-        
-        <footer>
-            <p>&copy; 2025 Student Record System. All rights reserved.</p>
-        </footer>
     </div>
     
-    <script>
-        // Clear any potentially corrupted auth data when visiting home page
-        if (window.location.pathname.includes('index.html') || 
-            window.location.pathname === '/' || 
-            window.location.pathname.endsWith('/')) {
-            
-            console.log('🏠 Home page loaded');
-        }
-    </script>
+    <script src="js/register.js"></script>
 </body>
 </html>
-
