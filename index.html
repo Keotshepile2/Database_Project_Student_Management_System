@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,5 +28,59 @@
             <p>&copy; 2023 Student Record System. All rights reserved.</p>
         </footer>
     </div>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Student Record System</h1>
+        </header>
+        
+        <main class="homepage">
+            <div class="welcome-section">
+                <h2>Welcome to the Student Record System</h2>
+                <p>Manage academic records efficiently and securely</p>
+                
+                <div class="auth-options">
+                    <div class="login-options">
+                        <h3>Existing Users</h3>
+                        <a href="login.html?type=student" class="btn btn-primary">Student Login</a>
+                        <a href="login.html?type=admin" class="btn btn-secondary">Admin Login</a>
+                    </div>
+                    
+                    <div class="register-options">
+                        <h3>New Users</h3>
+                        <p>Don't have an account? Create one now!</p>
+                        <a href="register.html" class="btn btn-success">Create Account</a>
+                    </div>
+                </div>
+            </div>
+            
+         
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Student Record System. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Clear any potentially corrupted auth data when visiting home page
+        if (window.location.pathname.includes('index.html') || 
+            window.location.pathname === '/' || 
+            window.location.pathname.endsWith('/')) {
+            
+            console.log('🏠 Home page loaded');
+        }
+    </script>
 </body>
 </html>
